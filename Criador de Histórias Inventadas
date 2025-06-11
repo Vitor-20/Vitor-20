@@ -1,0 +1,48 @@
+import streamlit as st
+
+# Título do app
+st.title("Gerador de Início de História com IA")
+
+# 1. Nome do protagonista
+nome_protagonista = st.text_input("Nome do Protagonista")
+
+# 2. Gênero literário
+genero = st.selectbox(
+    "Gênero Literário",
+    ["Fantasia", "Ficção Científica", "Mistério", "Aventura"]
+)
+
+# 3. Local inicial
+local_inicial = st.radio(
+    "Local Inicial da História",
+    ["Uma floresta antiga", "Uma cidade futurista", "Um castelo assombrado", "Uma nave espacial à deriva"]
+)
+
+# 4. Frase de efeito ou desafio inicial
+frase_desafio = st.text_area("Frase de Efeito ou Desafio Inicial")
+
+# 5. Botão para gerar história
+if st.button("Gerar Início da História"):
+
+    if not nome_protagonista or not frase_desafio:
+        st.warning("Por favor, preencha todos os campos obrigatórios.")
+    else:
+        # 6. Lógica de prompt (simulando chamada a IA)
+        prompt = (
+            f"Crie o início de uma história do gênero '{genero}', "
+            f"com um protagonista chamado '{nome_protagonista}'. "
+            f"A história começa em '{local_inicial}'. "
+            f"Incorpore a seguinte frase ou desafio no início: '{frase_desafio}'. "
+            f"Desenvolva em um ou dois parágrafos."
+        )
+
+        # Simulação de resposta da IA (substitua por chamada real à API Gemini, OpenAI, etc.)
+        historia_gerada = (
+            f"{frase_desafio} {nome_protagonista} nunca imaginou que sua jornada começaria assim. "
+            f"Em {local_inicial.lower()}, os ventos do destino sopravam com força. "
+            f"Essa seria uma aventura de tirar o fôlego, digna das melhores histórias de {genero.lower()}."
+        )
+
+        # 7. Exibir resultado
+        st.subheader("Início da História:")
+        st.write(historia_gerada)
